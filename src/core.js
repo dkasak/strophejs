@@ -761,7 +761,11 @@ export const Strophe = {
      */
     log (level, msg) {
         if (level === this.LogLevel.FATAL) {
-            window?.console?.error(msg);
+            if (typeof window !== "undefined") {
+                window.console.error(msg);
+            } else {
+                console.error(msg);
+            }
         }
     },
 
